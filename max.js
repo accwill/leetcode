@@ -18,6 +18,7 @@
  */
 
 /**
+ * 最低级的一版
  * @param {number[]} nums
  * @return {number}
  */
@@ -43,6 +44,7 @@ var maxSubArray = function (nums) {
 };
 
 /**
+ * 高级版
  * 核心思路是将当前元素定义为连续子数组的最后一个元素。
  * dp[i]：表示以 nums[i] 结尾 的 连续 子数组的最大和。
  * dp[i] = dp[i - 1] > 0 ?  dp[i - 1] + nums[i] : nums[i]
@@ -69,5 +71,16 @@ var maxSubArray2 = function (nums) {
   return res
 };
 
-const result = maxSubArray2([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+/** 高级优化版 */
+var maxSubArray3 = function (nums) {
+  let res = nums[0]
+  let pre = 0
+  for (const num of nums) {
+    pre = Math.max(pre + num, num)
+    res = Math.max(pre, res)
+  }
+  return res
+};
+
+const result = maxSubArray3([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
 console.log("result", result);
