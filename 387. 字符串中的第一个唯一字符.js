@@ -56,7 +56,7 @@
       delObj[`del-${s[i]}`] = 1
     }
   }
-  console.log('onbj', obj)
+  
   let min = Infinity
   for (const key in obj) {
     const element = obj[key];
