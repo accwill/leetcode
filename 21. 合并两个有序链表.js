@@ -45,9 +45,22 @@
  var mergeTwoLists = function(list1, list2) {
   let p1 = list1
   let p2 = list2
+  if (!p1) {
+    return p2
+  }
+  if (!p2) {
+    return p1
+  }
+  let nl = new ListNode()
+  if (p1.val > p2.val) {
+    nl.val = p2.val
+    p2 = p2.next
+  } else {
+    nl.val = p1.val
+    p1 = p1.next
+  }
 
-  const nl = new ListNode()
-
+  let head = nl
   while (p1 || p2) {
     if (!p1) {
       nl.next = p2
@@ -58,10 +71,47 @@
     } else if (p1.val > p2.val) {
       nl.next = p2
       p2 = p2.next
+    } else if (p1.val < p2.val) {
+      nl.next = p1
+      p1 = p1.next
     } else {
       nl.next = p1
       p1 = p1.next
+      nl = nl.next
+    
+      nl.next = p2
+      p2 = p2.next
     }
+
+    nl = nl.next
   }
-  return nl
+  return head
+};
+
+
+/**
+ * 简化版本
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeTwoLists1 = function(list1, list2) {
+  let p1 = list1
+  let p2 = list2
+  let nl = new ListNode()
+  const head = nl
+
+
+  while(p1 !== null && p2 !== null) {
+    if (p1.val <= p2.val) {
+      nl.next = p1
+      p1 = p1.next
+    } else {
+      nl.next = p2
+      p2 = p2.next
+    }
+    nl = nl.next
+  }
+   nl.next = p1 == null ? p2 : p1
+   return head.next
 };
