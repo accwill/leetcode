@@ -72,7 +72,7 @@ var preorderTraversal = function(root) {
  * @param {TreeNode} root
  * @return {number[]}
  */
-var inorderTraversal = function(root) {
+var postorderTraversal = function(root) {
 
   const result = []
 
