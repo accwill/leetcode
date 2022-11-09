@@ -45,6 +45,7 @@
  * }
  */
 /**
+ * 中序遍历，左跟右
  * @param {TreeNode} root
  * @return {number[]}
  */
@@ -63,6 +64,29 @@ var preorderTraversal = function(root) {
     node.left && qianxu(node.left)
     node.right && qianxu(node.right)
   }
-  qianxu(node)
+  qianxu(root)
+  return result
+};
+/**
+ * 后续遍历，左子树——右子树——根节点
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var inorderTraversal = function(root) {
+
+  const result = []
+
+  /**
+   * @param {TreeNode} node
+   */
+  const qianxu = (node) => {
+    if (!node) {
+      return
+    }
+    node.left && qianxu(node.left)
+    node.right && qianxu(node.right)
+    result.push(node.val)
+  }
+  qianxu(root)
   return result
 };
