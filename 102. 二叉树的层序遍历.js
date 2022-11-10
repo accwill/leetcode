@@ -36,22 +36,21 @@ function TreeNode(val, left, right) {
  * @return {number[]}
  */
 var levelOrder = function(root) {
-
   const result = []
   if (!root) {
     return result
   }
-
   const q = []
   q.push(root)
 
   while(q.length) {
-    const curSize = q.length
+
     result.push([])
+    const curSize = q.length
     for (let i = 0; i < curSize; i++) {
       const node = q.shift()
-      result[result.length - 1].push(node.val)
-      if (node.left) {
+      result[result.length - 1].push(node.val) // 当前level的值push一下
+      if (node.left) { 
         q.push(node.left)
       }
       if (node.right) {
