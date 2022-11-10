@@ -45,7 +45,7 @@
  * }
  */
 /**
- * 中序遍历，左跟右
+ * 💰序遍历，根左右
  * @param {TreeNode} root
  * @return {number[]}
  */
@@ -62,6 +62,29 @@ var preorderTraversal = function(root) {
     }
     result.push(node.val)
     node.left && qianxu(node.left)
+    node.right && qianxu(node.right)
+  }
+  qianxu(root)
+  return result
+};
+/**
+ * 中序遍历，左跟右
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var preorderTraversal = function(root) {
+
+  const result = []
+
+  /**
+   * @param {TreeNode} node
+   */
+  const qianxu = (node) => {
+    if (!node) {
+      return
+    }
+    node.left && qianxu(node.left)
+    result.push(node.val)
     node.right && qianxu(node.right)
   }
   qianxu(root)
